@@ -1,0 +1,29 @@
+{% if logs is defined %}
+        {% set lines = logs|split('\n') %}
+        <table>
+                {% for line in lines %}
+                {% set elements = line|split(',') %}
+                {% if loop.first %}
+                <thead>
+                <tr>
+                        {% for element in elements %}
+                                <th>{{ element }}</th>
+                        {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                {% else %}
+                        <tr>
+                                {% for element in elements %}
+                                        {% if loop.first %}
+                                                <td><b>{{ element }}</b></td>
+                                        {% else %}
+                                                <td>{{ element }}</td>
+                                        {% endif %}
+                                {% endfor %}
+                        </tr>
+                {% endif %}
+                {% endfor %}
+                </tbody>
+        </table>
+{% endif %}

@@ -1,0 +1,9 @@
+table {
+    width: 100%;
+}
+
+.server-data {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}

@@ -1,0 +1,26 @@
+{% if logs is defined %}
+        <table>
+                <thead>
+                <tr>
+                        <th>Id</th>
+                        <th>Client</th>
+                        <th>Server</th>
+                        <th>Created At</th>
+                        <th>Route</th>
+                        <th>Data</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for log in logs %}
+                        <tr>
+                                <td><b>{{ log.id }}</b></td>
+                                <td>{{ log.client }}</td>
+                                <td>{{ log.server }}</td>
+                                <td>{{ log.createdAt | date }}</td>
+                                <td>{{ log.route }}</td>
+                                <td>{{ log.data| json_encode() }}</td>
+                        </tr>
+                {% endfor %}
+                </tbody>
+        </table>
+{% endif %}

@@ -2,3 +2,7 @@ Dockerfile
 docker-compose.*
 .git
 .github
+.idea
+.dockerignore
+var
+vendor

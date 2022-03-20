@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8"/>
+        <!-- Bootstrap CSS -->
+        <!-- Mobile Specific Metas
+     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- FONT
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+        <!-- CSS
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link rel="stylesheet" href="assets/css/normalize.css">
+        <link rel="stylesheet" href="assets/css/skeleton.css">
+        <link rel="stylesheet" href="assets/css/app.css">
+        <script src="assets/js/app.js"></script>
+
+
+        <title>{% block title %}Welcome!{% endblock %}</title></head>
+<body>
+<div class="container" style="position: relative">
+        {% block body %}
+                {% include 'components/server-data.html.twig' with {serverData} only %}
+                <h2>Logs</h2>
+                <div style="position:sticky; top: 0; background-color: white" id="clear-button-container" data-url="{{ url('clear') }}">
+                        <button data-type="all" class="button-primary clear-data-button">Clear All</button>
+                        <button data-type="local" class="clear-data-button">Clear Local</button>
+                        <button data-type="shared" class="clear-data-button">Clear Shared</button>
+                        <button data-type="database" class="clear-data-button">Clear DataBase</button>
+                </div>
+                <h3>Database</h3>
+                <div id="database" class="log-container" data-container="databaseLogs">
+                        {% include 'components/render-entities.html.twig' with {logs: dbLogs} only %}
+                </div>
+
+                <h3>Local File</h3>
+                <div id="local" class="log-container" data-container="localLogs">
+                        {% include 'components/log-csv-render.html.twig' with {logs: localLogs} only %}
+                </div>
+                <h3>Shared Volume File</h3>
+                <div id="shared" class="log-container" data-container="sharedLogs">
+                        {% include 'components/log-csv-render.html.twig' with {logs: sharedLogs} only %}
+                </div>
+        {% endblock %}
+</div>
+</body>
+</html>
