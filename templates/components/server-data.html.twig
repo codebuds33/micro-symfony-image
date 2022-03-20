@@ -1,0 +1,10 @@
+{% if serverData is defined %}
+<div class="server-data">
+        <span class="client-ip">
+                <b>Client Ip : </b> {{ serverData.clientIp }}
+        </span>
+        <span class="local-ip">
+                <b>Server Ip : </b> {{ serverData.localIp }}
+        </span>
+</div>
+{% endif %}

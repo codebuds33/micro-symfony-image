@@ -1,7 +1,10 @@
 version: '3.8'
 
 services:
-  deno:
-    build: .
+  php:
+    build:
+      dockerfile: docker/php/Dockerfile
+      context: .
+    user: 1000:1000
     ports:
-      - 8080:8080
+      - 8500:8000

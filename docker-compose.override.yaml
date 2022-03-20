@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  php:
+    networks:
+      - maria
+    external_links:
+      - maria:maria
+    environment:
+      - DATABASE_URL=mysql://exploit:exploit@maria:3306/logs?serverVersion=mariadb-10.4.1"
+      - UID=1000
+      - GID=1000
+    volumes:
+      - ./:/srv/app
+      - ./pvc:/pvc
+
+networks:
+  maria:
+    external: true
