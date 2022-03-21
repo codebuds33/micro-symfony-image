@@ -23,7 +23,11 @@ class LogsController extends AbstractController
     private string $localLogsFilePath;
     private string $pvcLogsFilePath;
 
-    public function __construct(private EntityManagerInterface $manager, private RemoteServerIpService $serverIpService)
+    public function __construct(
+        private EntityManagerInterface $manager,
+        private RemoteServerIpService $serverIpService,
+        private string $databaseUrl,
+    )
     {
         $this->visitRepository = $this->manager->getRepository(Visit::class);
         $this->localLogsFilePath = Path::normalize(sys_get_temp_dir().'/local-logs/logs.csv');
@@ -49,6 +53,9 @@ class LogsController extends AbstractController
             'localLogs' => $localFileContent,
             'sharedLogs' => $pvcFileContent,
             'serverData' => $serverData,
+            'databaseUrl' => $this->databaseUrl,
+            'localFilePath' => $this->localLogsFilePath,
+            'sharedFilePath' => $this->pvcLogsFilePath,
         ]);
     }
 
