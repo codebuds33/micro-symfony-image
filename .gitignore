@@ -12,3 +12,5 @@
 
 /shared-logs/
 !/shared-logs/.gitkeep
+
+docker-compose.override.yaml

@@ -28,7 +28,7 @@ RUN apk add --allow-untrusted /srv/app/docker/php/symfony-cli_5.4.2_x86_64.apk
 
 RUN mkdir /.symfony5 /.symfony /.symfony6 /.cache
 
-RUN chown -R ${UID}:${GID} /srv/app /.symfony* /.cache
+RUN chown -R ${UID}:${GID} /srv/app /.symfony* /.cache && chmod 777 /.symfony* /.cache
 
 ENV DATABASE_URL=mysql://exploit:exploit@maria:3306/logs
 
