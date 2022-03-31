@@ -64,7 +64,7 @@ USER ${UID}:${GID}
 
 RUN composer install && composer dump-autoload --optimize
 
-RUN rm -rf /.composer/* /.cache/*
+RUN rm -rf /.composer/* /.cache/* /srv/app/node_modules
 
 EXPOSE 8000
 
