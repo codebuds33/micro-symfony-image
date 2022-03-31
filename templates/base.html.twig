@@ -1,60 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8"/>
-        <!-- Bootstrap CSS -->
-        <!-- Mobile Specific Metas
-     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
 
-        <!-- FONT
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <!-- Bootstrap CSS -->
+    <!-- Mobile Specific Metas
+ –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- CSS
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <link rel="stylesheet" href="assets/css/normalize.css">
-        <link rel="stylesheet" href="assets/css/skeleton.css">
-        <link rel="stylesheet" href="assets/css/app.css">
-        <script src="assets/js/app.js"></script>
+    <!-- FONT
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 
 
-        <title>{% block title %}Welcome!{% endblock %}</title></head>
+    <title>{% block title %}Symfony Logs !{% endblock %}</title></head>
 <body>
-<div class="container" style="position: relative">
-        {% block body %}
-                {% include 'components/server-data.html.twig' with {serverData} only %}
-                <h2>Logs</h2>
-                <div class="clear-button-container" id="clear-button-container" data-url="{{ url('clear') }}">
-                        <button data-type="all" class="button-primary clear-data-button">Clear All</button>
-                        <button data-type="local" class="clear-data-button">Clear Local</button>
-                        <button data-type="shared" class="clear-data-button">Clear Shared</button>
-                        <button data-type="database" class="clear-data-button">Clear DataBase</button>
-                </div>
-                <span class="log-source-container collapsible">
+<div class="container" >
+    {% block body %}
+        {% include 'components/server-data.html.twig' with {serverData} only %}
+        <h2>Logs</h2>
+        <div class="clear-button-container" id="clear-button-container" data-url="{{ url('clear') }}">
+            <button data-type="all" class="button-primary clear-data-button">Clear All</button>
+            <button data-type="local" class="clear-data-button">Clear Local</button>
+            <button data-type="shared" class="clear-data-button">Clear Shared</button>
+            <button data-type="database" class="clear-data-button">Clear DataBase</button>
+        </div>
+        <span class="log-source-container collapsible">
                         <h3>Database</h3>
                         <span class="log-source">{{ databaseUrl }}</span>
                 </span>
-                <div id="database" class="log-container content" data-container="databaseLogs">
-                        {% include 'components/render-entities.html.twig' with {logs: dbLogs} only %}
-                </div>
-                <span class="log-source-container collapsible">
+        <div id="database" class="log-container content" data-container="databaseLogs">
+            {% include 'components/render-entities.html.twig' with {logs: dbLogs} only %}
+        </div>
+        <span class="log-source-container collapsible">
                         <h3>Local File</h3>
                         <span class="log-source">{{ localFilePath }}</span>
                 </span>
-                <div id="local" class="log-container content" data-container="localLogs">
-                        {% include 'components/log-csv-render.html.twig' with {logs: localLogs} only %}
-                </div>
+        <div id="local" class="log-container content" data-container="localLogs">
+            {% include 'components/log-csv-render.html.twig' with {logs: localLogs} only %}
+        </div>
 
-                <span class="log-source-container collapsible">
+        <span class="log-source-container collapsible">
                         <h3>Shared Volume File</h3>
                         <span class="log-source">{{ sharedFilePath }}</span>
                 </span>
-                <div id="shared" class="log-container content" data-container="sharedLogs">
-                        {% include 'components/log-csv-render.html.twig' with {logs: sharedLogs} only %}
-                </div>
-        {% endblock %}
+        <div id="shared" class="log-container content" data-container="sharedLogs">
+            {% include 'components/log-csv-render.html.twig' with {logs: sharedLogs} only %}
+        </div>
+    {% endblock %}
 </div>
 </body>
 </html>

@@ -5,6 +5,5 @@ services:
     build:
       dockerfile: docker/php/Dockerfile
       context: .
-    user: 1000:1000
     ports:
       - 8500:8000

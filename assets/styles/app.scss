@@ -1,5 +1,12 @@
+@import "normalize.css";
+@import "skeleton.css";
+
 * {
     box-sizing: border-box;
+}
+
+.container {
+    position: relative;
 }
 
 .server-data, .clear-button-container {
@@ -15,6 +22,8 @@ table {
     top: 3rem;
     border-bottom: 1px solid grey;
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 .server-data {
@@ -62,7 +71,7 @@ table {
     margin-bottom: 1rem;
     background-color: white;
     max-height: 0;
-    transition: max-height 0.2s ease-out;
+    transition: max-height 0.4s ease-out;
 }
 
 .collapsible > h3 {
@@ -74,8 +83,10 @@ table {
     content: '\02795'; /* Unicode character for "plus" sign (+) */
     font-size: 2rem;
     margin-right: 5px;
+    transition: all 0.25s ease-out;
 }
 
 .active > h3:before {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
+    transform: rotateZ(180deg);
 }
