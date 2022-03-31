@@ -1,4 +1,8 @@
 * {
+    box-sizing: border-box;
+}
+
+.server-data, .clear-button-container {
     background-color: white
 }
 
@@ -9,6 +13,8 @@ table {
 .clear-button-container {
     position:sticky;
     top: 3rem;
+    border-bottom: 1px solid grey;
+    margin-bottom: 1rem;
 }
 
 .server-data {
@@ -29,4 +35,47 @@ table {
 
 .log-source-container h3{
     margin-bottom: 0;
+}
+
+
+.collapsible {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+    background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+    padding: 0 18px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background-color: white;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+}
+
+.collapsible > h3 {
+    display: flex;
+    align-items: center;
+}
+
+.collapsible > h3:before {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 2rem;
+    margin-right: 5px;
+}
+
+.active > h3:before {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
